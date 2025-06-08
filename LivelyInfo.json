@@ -1,0 +1,17 @@
+{
+  "AppVersion": "1.0.1.2",
+  "Title": "Lunch Menu for CCJH, Chiayi, Taiwan(R.O.C)",
+  "Thumbnail": "",
+  "Preview": "",
+  "Desc": "Lunch Menu for CCJH, Chiayi, Taiwan(R.O.C)",
+  "Author": "Yi-En Jhan",
+  "License": "MIT License",
+  "Contact": "",
+  "Type": 1,
+  "FileName": "index.html",
+  "Arguments": "--audio --system-nowplaying",
+  "IsAbsolutePath": false,
+  "Id": null,
+  "Tags": null,
+  "Version": 0
+}

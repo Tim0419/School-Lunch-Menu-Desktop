@@ -1,0 +1,13 @@
+{
+	"update": {
+		"time": 2700000,
+		"tomorrow": {
+			"hour": 12,
+			"minute": 20
+		}
+	},
+	"background": {
+		"src": "resource/rain-threejs/index.html",
+		"interactivity": false
+	}
+}

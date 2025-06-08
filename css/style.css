@@ -1,0 +1,205 @@
+/* 1. 全域 CSS 變數 */
+:root {
+	--menu-width: 500px;
+	--cell-width: 100px;
+}
+
+/* 2. 版面配置 */
+/* 2.1 主體布局 */
+body {
+	display: flex;
+}
+
+/* 2.2 佔位元件，用於左右空白 */
+.placeholder {
+	flex: 1;
+	z-index: -2;
+}
+
+/* 2.3 整體午餐區容器 */
+.lunch-menu {
+	display: grid;
+	width: auto;
+	height: auto;
+	gap: 10px;
+}
+
+/* 2.4 標題列 */
+.top {
+	width: var(--menu-width);
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 3. 標題樣式 */
+.menu_title {
+	display: inline-block;
+	width: 360px;
+	height: 20px;
+	border: 2px solid;
+	border-radius: 10px;
+	text-align: center;
+	color: #fff;
+}
+
+/* 4. 按鈕樣式 */
+/* 4.1 基本按鈕 */
+.btn {
+	display: block;
+	color: #fff;
+	border: 2px solid #000;
+	border-radius: 5px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 4.2 更新按鈕 */
+.btn.update {
+	display: inline-block;
+	background-color: #007bff;
+	border-color: #007bff;
+	width: 125px;
+}
+
+.btn.update:hover {
+	background-color: #0056b3;
+	border-color: #0056b3;
+}
+
+/* 5. 菜單區塊 */
+/* #menu: 容納所有菜品卡片的網格 */
+#menu {
+	background-color: beige;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 10px;
+	width: var(--menu-width);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+/* 6. 單一菜品卡片 */
+/* 6.1 基底樣式 */
+.dish {
+	background-color: aqua;
+	border: 2px solid aqua;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dish.selected {
+	border-color: orange;
+}
+
+/* 6.2 滑鼠懸停 */
+.dish:hover {
+	border-color: orange;
+}
+
+/* 6.3 圖片區塊 */
+.pic {
+	display: flex;
+	justify-content: center;
+	margin: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.pic:hover {
+	border-color: orange;
+}
+
+/* 圖片本體 */
+.dish img {
+	width: 144px;
+	height: 108px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* 6.4 分隔線 */
+.line {
+	height: 3px;
+	background-color: aqua;
+	width: 100%;
+}
+
+/* 6.5 資訊區塊 */
+.info {
+	width: 80%;
+	display: flex;
+	justify-content: flex-start;
+	padding: 10px 10px 0 10px;
+	margin-bottom: 10px;
+}
+
+.info p {
+	margin: 0;
+	text-align: start;
+}
+
+/* 7. 食材來源列表 */
+/* 7.1 容器 */
+#ingredients {
+	display: grid;
+	width: 500px;
+	height: auto;
+	max-height: 460px;
+	padding: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: beige;
+}
+
+/* 7.2 每筆食材項目 */
+.ingredient {
+	display: flex;
+	padding: 0;
+}
+
+/* 7.3 欄位 */
+.cell {
+	display: inline-block;
+	padding: 10px;
+}
+
+.cell.name,
+.cell.origin {
+	width: var(--cell-width);
+	margin-right: 10px;
+}
+
+.cell.supplier {
+	width: calc(var(--cell-width) + 120px);
+}
+
+/* 7.4 條列分隔線 */
+hr {
+	margin: 10px 0;
+}
+
+/* 8.1 背景 */
+.background-iframe {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	z-index: -1; 	
+}
+
+/*.back {
+	position: fixed;
+	width: 100vw;
+	height: auto;
+	align-self: center;
+	z-index: -2;
+	margin-right: 100px;
+}*/
