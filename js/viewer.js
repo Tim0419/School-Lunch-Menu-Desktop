@@ -8,7 +8,7 @@ const menu_title = document.querySelector(".menu_title");
 /**
  * getSettings
  * @param {string} path The path of the settings 設定的路徑
- * @returns {boolean} Whether the funtion processed failed 函數是否執行失敗
+ * @returns {boolean} Whether the function processed failed 函數是否執行失敗
  */
 
 async function getSettings(path) {
@@ -77,7 +77,7 @@ async function getLunch(day, schoolId = null, kitchenId = null) {
 /**
  * showLunchData
  * @param {Array} dishes The data of each dishes 每一道餐點的資料
- * @returns Whether the funtion processed failed 函數是否執行失敗
+ * @returns Whether the function processed failed 函數是否執行失敗
  */
 async function showLunchData(dishes) {
 	try {
