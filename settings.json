@@ -1,4 +1,8 @@
 {
+	"id": {
+		"school": "",
+		"kitchen": ""
+	},
 	"update": {
 		"time": 2700000,
 		"tomorrow": {
@@ -7,7 +11,7 @@
 		}
 	},
 	"background": {
-		"src": "resource/rain-threejs/index.html",
+		"src": "",
 		"interactivity": false
 	}
 }

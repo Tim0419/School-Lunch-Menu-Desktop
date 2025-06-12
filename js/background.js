@@ -1,8 +1,8 @@
 // Need viewer.js to process
 
 const bg = document.querySelector(".background-iframe");
-let d_src = "";
-let d_interactivity = null;
+let bg_src = "";
+let bg_interactivity = null;
 
 function setBackground(src, interactivity) {
 	try {

@@ -1,3 +1,4 @@
 .vscode/
 resource/
 settings.json
+.prettierrc

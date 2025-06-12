@@ -1,5 +1,7 @@
 let updateTime = null;
 let updateTimeTomorrow = { hour: null, minute: null };
+let KitchenID = null;
+let SchoolID = null;
 
 const menu = document.getElementById("menu");
 const ingredients = document.getElementById("ingredients");
@@ -8,7 +10,7 @@ const menu_title = document.querySelector(".menu_title");
 /**
  * getSettings
  * @param {string} path The path of the settings 設定的路徑
- * @returns {boolean} Whether the funtion processed failed 函數是否執行失敗
+ * @returns {boolean} Whether the function processed failed 函數是否執行失敗
  */
 
 async function getSettings(path) {
@@ -23,16 +25,18 @@ async function getSettings(path) {
 		updateTime = settings.update.time || 2 * 60 * 60 * 1 * 1000;
 		updateTimeTomorrow.hour = settings.update.tomorrow.hour || 12;
 		updateTimeTomorrow.minute = settings.update.tomorrow.minute || 30;
-		d_interactivity = settings.background.interactivity || false;
-		d_src = settings.background.src || "";
+		bg_interactivity = settings.background.interactivity || false;
+		bg_src = settings.background.src || "";
+		KitchenID = settings.id.kitchen;
+		SchoolID = settings.id.school;
 
 		return false;
 	} catch (error) {
 		updateTime = 2 * 60 * 60 * 1 * 1000;
 		updateTimeTomorrow.hour = 12;
 		updateTimeTomorrow.minute = 30;
-		d_interactivity = false;
-		d_src = "";
+		bg_interactivity = false;
+		bg_src = "";
 
 		console.error(error);
 		return true;
@@ -77,7 +81,7 @@ async function getLunch(day, schoolId = null, kitchenId = null) {
 /**
  * showLunchData
  * @param {Array} dishes The data of each dishes 每一道餐點的資料
- * @returns Whether the funtion processed failed 函數是否執行失敗
+ * @returns Whether the function processed failed 函數是否執行失敗
  */
 async function showLunchData(dishes) {
 	try {
@@ -198,14 +202,14 @@ async function update() {
 	try {
 		await getSettings();
 
-		setBackground(d_src, d_interactivity);
+		setBackground(bg_src, bg_interactivity);
 		ingredients.innerHTML = "";
 		ingredients.style = "display: none;";
 
 		if (condition_today()) {
 			menu_title.innerHTML = "今日午餐菜單";
 			menu_title.style = "background-color: green; border-color: green;";
-			const dishes = await getLunch(0);
+			const dishes = await getLunch(0, SchoolID, KitchenID);
 			await showLunchData(dishes);
 			return false;
 		}
@@ -216,7 +220,7 @@ async function update() {
 		menu_title.innerHTML = "明日午餐菜單";
 		menu_title.style = "background-color: red; border-color: red;";
 
-		const dishes = await getLunch(1);
+		const dishes = await getLunch(1, SchoolID, KitchenID);
 		await showLunchData(dishes);
 		return false;
 	} catch (error) {
