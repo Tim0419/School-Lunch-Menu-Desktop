@@ -11,7 +11,7 @@
 
 ## settings.json
 
-    ```json
+    ``` json
         {
             "id": {
                 "school": "The School ID(number or string) 學校代碼(數字或字串)",
