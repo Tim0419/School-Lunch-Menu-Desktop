@@ -3,8 +3,10 @@
 ---
 
 ## Environment Building
+
 - Download [Lively Wallpaper](https://github.com/rocksdanister/lively?tab=readme-ov-file#download) or another wallpaper engine.
 - 下載[Lively Wallpaper](https://github.com/rocksdanister/lively?tab=readme-ov-file#download)或其他同類型程式
+
 ---
 
 ## settings.json
