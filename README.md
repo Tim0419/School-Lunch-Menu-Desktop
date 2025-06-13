@@ -30,3 +30,9 @@
         }
     }
 ```
+- Get the school ID
+  1. Visit [教育部校園食材登錄平臺2.0](https://fatraceschool.k12ea.gov.tw/)
+  2. Search the school.
+  3. You can see the school ID in the URL(the param called 'school').
+- Get the kitchen ID
+  - If you don't know, you can use "all"
