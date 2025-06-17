@@ -44,6 +44,33 @@ async function getSettings(path) {
 	}
 }
 
+async function errorHanding(err) {
+	try {
+		switch (err) {
+			case 'Failed to get data':
+				const a = condition_today(data_tempStorage.time);
+				const b = condition_today();
+				if (data_tempStorage.data && data_tempStorage.data[0] !== 'ERROR' && a === b) {
+					console.warn('Using cached data');
+					await showLunchData(data_tempStorage.data);
+					return false;
+				} else {
+					console.error('No cached data available');
+					menu.innerHTML = '無資料 / 無法取得資料';
+					ingredients.innerHTML = '';
+					return true;
+				}
+			default:
+				console.error('Unknown error: ', err);
+				break;
+		}
+		return false;
+	} catch (error) {
+		console.error('Error: ', error);
+		return true;
+	}
+}
+
 /**
  * getLunch
  * @param {number} day relation day 相對日期
@@ -83,7 +110,6 @@ async function showLunchData(dishes) {
 		// Clearing menu 清空菜單
 		menu.innerHTML = '';
 
-		if (dishes[0] === 'ERROR') return (menu.innerHTML = '無法取得資料');
 		if (!dishes[0]) return (menu.innerHTML = '不供餐 / 無資料');
 
 		const Dishes = dishes;
@@ -200,6 +226,10 @@ async function update() {
 			menu_title.innerHTML = '今日午餐菜單';
 			menu_title.style = 'background-color: green; border-color: green;';
 			const dishes = await getLunch(0, SchoolID, KitchenID);
+			if (dishes[0] === 'ERROR') {
+				await errorHanding('Failed to get data');
+				return true;
+			}
 			data_tempStorage.data = dishes;
 			data_tempStorage.time = new Date();
 			await showLunchData(dishes);
@@ -213,6 +243,11 @@ async function update() {
 		menu_title.style = 'background-color: red; border-color: red;';
 
 		const dishes = await getLunch(1, SchoolID, KitchenID);
+		if (dishes[0] === 'ERROR') {
+			await errorHanding('Failed to get data');
+			return true;
+		}
+
 		data_tempStorage.data = dishes;
 		data_tempStorage.time = new Date();
 		await showLunchData(dishes);
@@ -240,8 +275,8 @@ async function auto_update() {
 	}, delay);
 }
 
-function condition_today() {
-	const time = new Date();
+function condition_today(time) {
+	time = time || new Date();
 
 	// true ? today : tomorrow
 	const condition = time.getHours() < updateTimeTomorrow.hour || (time.getHours() == updateTimeTomorrow.hour && time.getMinutes() < updateTimeTomorrow.minute);
