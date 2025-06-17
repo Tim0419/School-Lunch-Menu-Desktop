@@ -7,6 +7,8 @@ const menu = document.getElementById('menu');
 const ingredients = document.getElementById('ingredients');
 const menu_title = document.querySelector('.menu_title');
 
+let data_tempStorage = { data: null, time: null };
+
 /**
  * getSettings
  * @param {string} path The path of the settings 設定的路徑
@@ -198,6 +200,8 @@ async function update() {
 			menu_title.innerHTML = '今日午餐菜單';
 			menu_title.style = 'background-color: green; border-color: green;';
 			const dishes = await getLunch(0, SchoolID, KitchenID);
+			data_tempStorage.data = dishes;
+			data_tempStorage.time = new Date();
 			await showLunchData(dishes);
 			return false;
 		}
@@ -209,6 +213,8 @@ async function update() {
 		menu_title.style = 'background-color: red; border-color: red;';
 
 		const dishes = await getLunch(1, SchoolID, KitchenID);
+		data_tempStorage.data = dishes;
+		data_tempStorage.time = new Date();
 		await showLunchData(dishes);
 		return false;
 	} catch (error) {
