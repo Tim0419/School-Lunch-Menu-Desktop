@@ -138,7 +138,7 @@ async function showLunchData(dishes) {
 				let day = condition_today() ? 0 : 1;
 
 				const ingerdientsData = await getDishIngredients(
-					await getBatchDataId(null, null, day, SchoolId, KitchenId),
+					await getBatchDataId(null, null, day, SchoolID, KitchenID),
 					id
 				);
 
