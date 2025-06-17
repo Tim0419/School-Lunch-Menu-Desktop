@@ -30,6 +30,7 @@
         }
     }
 ```
+
 - Get the school ID
   1. Visit [教育部校園食材登錄平臺2.0](https://fatraceschool.k12ea.gov.tw/)
   2. Search the school.
