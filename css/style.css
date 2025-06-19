@@ -20,7 +20,7 @@ body {
 }
 
 .top {
-	width: var(--menu-width);
+	width: calc(var(--menu-width) + 20px);
 	display: flex;
 	justify-content: space-between;
 }
@@ -168,4 +168,24 @@ hr {
 	height: 100%;
 	border: none;
 	z-index: -1;
+}
+
+.state {
+	text-align: center;
+}
+
+.state[data_state] {
+	height: 0px;
+	padding: 0px;
+	position: fixed;
+}
+
+.state[data_state='message'] {
+	background-color: beige;
+	height: auto;
+	padding: 5px;
+	width: calc(var(--menu-width) + 10px);
+	position: relative;
+	border: 5px beige;
+	border-radius: 5px;
 }

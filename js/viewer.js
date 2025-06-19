@@ -6,6 +6,7 @@ let SchoolID = null;
 const menu = document.getElementById('menu');
 const ingredients = document.getElementById('ingredients');
 const menu_title = document.querySelector('.menu_title');
+const state = document.querySelector('.state');
 
 let data_tempStorage = { data: null, time: null };
 
@@ -53,6 +54,8 @@ async function errorHanding(err) {
 				if (data_tempStorage.data && data_tempStorage.data[0] !== 'ERROR' && a === b) {
 					console.warn('Using cached data');
 					await showLunchData(data_tempStorage.data);
+					state.setAttribute('data_state', 'message');
+					state.textContent = `無法取得資料 : 目前資料(${data_tempStorage.time.getHours()}時${data_tempStorage.time.getMinutes()}分)`;
 					return false;
 				} else {
 					console.error('No cached data available');
@@ -79,6 +82,7 @@ async function errorHanding(err) {
  * @returns {Array}
  */
 async function getLunch(day, schoolId = null, kitchenId = null) {
+	state.setAttribute('data_state', '');
 	try {
 		// Get the BatchDataId 取得BatchDataId
 		const BatchDataId = await getBatchDataId(null, null, day, schoolId, kitchenId);
